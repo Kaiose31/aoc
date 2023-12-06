@@ -413,10 +413,63 @@ fn day5() {
     dbg!(res.iter().min());
 }
 
+fn day6() {
+    let inputs = read_input("inputs/day6sm.txt".to_string());
+    let time = inputs[0]
+        .split_once(":")
+        .unwrap()
+        .1
+        .split_whitespace()
+        .collect::<String>()
+        .parse::<i64>()
+        .unwrap();
+
+    let distance = inputs[1]
+        .split_once(":")
+        .unwrap()
+        .1
+        .split_whitespace()
+        .collect::<String>()
+        .parse::<i64>()
+        .unwrap();
+
+    dbg!(time, distance);
+    let mut way_c = 0;
+    for i in 0..time {
+        let speed = i;
+        let rem_time = time - i;
+        let dist = speed * rem_time;
+
+        if dist > distance {
+            way_c += 1;
+        }
+    }
+
+    dbg!(way_c);
+
+    // let mut ways: Vec<i32> = Vec::new();
+    // for (index, time) in time.iter().enumerate() {
+    //     let mut way_c = 0;
+    //     for i in 0..*time {
+    //         //speed = i
+    //         let speed = i;
+    //         let rem_time = time - i;
+
+    //         let dist = speed * rem_time;
+
+    //         if dist > distance[index] {
+    //             way_c += 1;
+    //         }
+    //     }
+    //     ways.push(way_c);
+    // }
+    // dbg!(ways.iter().product::<i32>());
+}
 fn main() {
     // day1two();
     // day2();
     // day3();
     // day4();
-    day5();
+    // day5();
+    // day6();
 }
